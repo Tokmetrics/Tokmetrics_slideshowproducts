@@ -1,12 +1,12 @@
 # TokMetrics slideshow products
 
-Daily TikTok Shop UK product picks from **@tikshop.uk / TokMetrics**, plus a Claude skill that turns
+The **TokMetrics list**: daily TikTok Shop UK product picks from **@tikshop.uk**, plus a Claude skill that turns
 them into ready-to-post photo slideshows.
 
 ## products/
 - `latest.json` – today's 30 picks, refreshed every morning (~6am UK).
-  - 15 from the **GMV Max Radar** filter (fast-growing, affiliate-driven products)
-  - 15 **top products of the last 30 days**
+  - 15 **rising now** (fast-rising products)
+  - 15 **best sellers** (last 30 days)
 - `YYYY-MM-DD.json` – each day's list, kept as history.
 
 Each product has `rank`, `list`, `product`, `productId`, `productUrl` (TikTok Shop UK link),
