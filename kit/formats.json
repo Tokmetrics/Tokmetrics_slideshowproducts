@@ -1,0 +1,43 @@
+{
+  "_about": "Measured from @tikshop.uk's own posts (Nov 2026). All positions are fractions of a 1080x1920 slide. Text slots in {braces} come from copy.json. Fonts: TikTok Sans Medium for TikTok text boxes and outlined text; Liberation Sans (Arial-style) for the Snapchat caption bar.",
+  "themes": {
+    "yellow": {"box": "#FEF5A5", "color": "#AC6629"},
+    "red":    {"box": "#E74041", "color": "#FFFFFF", "sub_outline": "#E74041"}
+  },
+  "formats": {
+    "DEAL-FIRST": {
+      "slides": 2,
+      "description": "Slide 1 = real screenshot of the live listing with the sale price circled in red, hook + sub text over the product image. Slide 2 = realistic faceless POV photo of the product in a natural setting, main line + bracketed sub-line + CTA.",
+      "needs": "A real discount on the listing (a was-price or -NN%).",
+      "default_theme": "yellow",
+      "slide1": {"type": "dealshot", "blocks": [
+        {"style": "box", "slot": "deal_hook", "y0": 0.276, "line_h": 0.0503, "max_w": 0.78, "x_center": 0.5},
+        {"style": "box", "slot": "deal_sub", "y0": 0.444, "line_h": 0.0309, "max_w": 0.56, "x_center": 0.585},
+        {"style": "circle", "target": "price"}
+      ]},
+      "slide2": {"type": "photo", "photo": "product", "blocks": [
+        {"style": "box", "slot": "product_main", "y0": 0.121, "line_h": 0.0428, "max_w": 0.74, "x_center": 0.504},
+        {"style": "box", "slot": "product_sub", "y0": 0.2271, "line_h": 0.0309, "max_w": 0.52, "x_center": 0.60},
+        {"style": "box", "slot": "cta", "nowrap": true, "anchor": "bottom", "y1": 0.785, "x0": 0.03, "align": "left", "center_lines": true, "line_h": 0.0328}
+      ]}
+    },
+    "SNAP-CAPTION": {
+      "slides": 2,
+      "description": "Slide 1 = realistic faceless POV photo of the product (e.g. laid on a bed / counter with gift wrap), Snapchat-style caption bar near the top as if sending it to friends, plus a big white outlined line mid-slide teasing the price. Slide 2 = real listing screenshot with the sale price circled, main line + sub-line + CTA.",
+      "needs": "A real discount works best; without one, use snap_main lines that don't claim a discount.",
+      "default_theme": "red",
+      "slide1": {"type": "photo", "photo": "product", "blocks": [
+        {"style": "snapbar", "slot": "snap_caption", "y_center": 0.1515, "size": 0.0235},
+        {"style": "plain", "slot": "snap_main", "y0": 0.488, "size": 0.037, "pitch": 0.0487, "max_w": 0.72, "stroke": 0.045, "stroke_color": "#1A1A1A", "color": "#FFFFFF"}
+      ]},
+      "slide2": {"type": "dealshot", "blocks": [
+        {"style": "box", "slot": "deal_main", "y0": 0.10, "line_h": 0.0382, "max_w": 0.70, "x_center": 0.45},
+        {"style": "plain", "slot": "deal_sub2", "y0": 0.215, "size": 0.0215, "pitch": 0.0275, "max_w": 0.52, "x_center": 0.60, "color": "#FFFFFF", "stroke": 0.11, "stroke_color": "{theme.sub_outline}"},
+        {"style": "circle", "target": "price"},
+        {"style": "box", "slot": "cta", "nowrap": true, "anchor": "bottom", "y1": 0.785, "x0": 0.03, "align": "left", "center_lines": true, "line_h": 0.0328}
+      ]}
+    }
+  },
+  "cta_rule": "The CTA always sits bottom-left with its bottom edge at y 0.785 and left edge at x 0.03, so it points at TikTok's product-link sticker without covering it. Never move it.",
+  "dealshot_rule": "Built by render.py from a REAL screenshot of the live listing (shop.tiktok.com/gb/pdp/<id>), never redrawn or edited. Product image on top, the real price/title/sold block underneath, red loop drawn around the live sale price."
+}
