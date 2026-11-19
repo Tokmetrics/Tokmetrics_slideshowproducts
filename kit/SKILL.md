@@ -1,19 +1,21 @@
 ---
 name: tokmetrics-slideshows
-description: Make TikTok Shop UK slideshows from the daily TokMetrics product list (@tikshop.uk formats) - pick the top products, get ChatGPT to make the photos, add the text and save the slides to this computer. Use when asked for slideshows from the TokMetrics / tikshop.uk product list.
+description: Make TikTok Shop UK slideshows from today's TokMetrics list - as many as the person asks for. Picks the top products, gets ChatGPT to make the photos, adds the text, saves the slides to this computer and gives the product links in chat. Use when asked for TokMetrics slideshows.
 ---
 
 # TokMetrics slideshows
 
-Makes ready-to-post TikTok Shop UK photo slideshows in @tikshop.uk's two proven formats, from the
-daily product list at:
+Makes ready-to-post TikTok Shop UK photo slideshows in @tikshop.uk's two proven formats, from
+**today's TokMetrics list** (30 hand-picked UK products, refreshed every morning) at:
 
 - Products: `https://raw.githubusercontent.com/Tokmetrics/Tokmetrics_slideshowproducts/main/products/latest.json`
 - Latest formats + rotating text: `.../main/kit/formats.json` and `.../main/kit/copy.json`
   (same repo). If these can't be read, use the copies bundled in this skill folder.
 
-The person says how many slideshows they want ("make 10", "do 25"). Default 10. Each slideshow takes
-about 4–6 minutes, mostly waiting for ChatGPT.
+**How many:** the person says how many slideshows they want ("make 10", "do 25"). If they didn't say,
+ask once ("How many slideshows would you like today?"); if no answer comes, make 10. Each slideshow
+takes about 4–6 minutes, mostly waiting for ChatGPT, so say roughly how long the batch will take.
+Always call the source "the TokMetrics list" — don't describe where TokMetrics gets its products.
 
 **Never post anything to TikTok.** The person posts manually. Never type passwords.
 
@@ -76,7 +78,7 @@ about 4–6 minutes, mostly waiting for ChatGPT.
    `date` — if it's older than 2 days, tell the person the list hasn't been refreshed but carry on.
    Also read `kit/formats.json` and `kit/copy.json` the same way (fallback: bundled copies).
 2. Read `<output folder>/_done.json` if it exists (product IDs made in the last 7 days) and skip those.
-3. Go down the list in `rank` order and take as many products as slideshows requested. If they ask for
+3. Go down the TokMetrics list in `rank` order and take as many products as slideshows requested. If they ask for
    more slideshows than products available, make 2 per product (one of each format).
 
 ## Step 2 — For each product
@@ -127,6 +129,16 @@ about 4–6 minutes, mostly waiting for ChatGPT.
 Update `_used-lines.json` and `_done.json`.
 
 ## Step 3 — Finish
-Make a contact sheet (`preview.jpg`, all slideshows in rows), save it in the day folder, and show it.
-Say how many are ready, where they are, and anything that needs the person (skipped products,
-ChatGPT limits, Downloads to tidy). Close the tabs you opened.
+1. Make a contact sheet (`preview.jpg`, all slideshows in rows), save it in the day folder, and show it.
+2. **In the chat, list every slideshow with its product link** so the person can add it when posting:
+   ```
+   1. Henry Quick corded stick vacuum (DEAL-FIRST) — £95.99, was £159.99
+      https://www.tiktok.com/shop/gb/pdp/1729964096493754827
+      Folder: 2026-11-19/01 - Henry vacuum - DEAL-FIRST
+   2. ...
+   ```
+   Use the short product name, the format, today's price (and was-price if there is one), the
+   `productUrl` from the TokMetrics list, and the folder name. Also write the same list to
+   `<day folder>/links.txt`.
+3. Say how many are ready, where they are, and anything that needs the person (skipped products,
+   ChatGPT limits, Downloads to tidy). Close the tabs you opened.
